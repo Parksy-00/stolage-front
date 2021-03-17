@@ -1,28 +1,29 @@
 import React from 'react';
 import 'antd/dist/antd.css';
 import { Steps } from 'antd';
+import { useRecoilState } from 'recoil';
+import stepStatus from '../../StepManage/step'
 
 const { Step } = Steps;
 
-export default class VerticalStep extends React.Component {
-  state = {
-    current: 0,
-  };
+let VerticalStep = () => {
+  let [status, setstatus] = useRecoilState(stepStatus);
+  let current = status.currentIndex;
 
-  onChange = current => {
-    console.log('onChange:', current);
-    this.setState({ current });
-  };
-
-  render() {
-    const { current } = this.state;
-
-    return (
-      <Steps current={current} onChange={this.onChange} direction="vertical">
-        <Step title="Step 1" description="This is a description." />
-        <Step title="Step 2" description="This is a description." />
-        <Step title="Step 3" description="This is a description." />
-      </Steps>
-    );
+  let onChange = (current) => {
+    setstatus({
+      currentIndex: current
+    })
   }
+
+  return (
+    <Steps current={current} onChange={onChange} direction="vertical">
+      <Step title="시작하기" description="Stolage가 무엇인가요?" />
+      <Step title="탐색하기" description="내 파일를 어떻게 찾을 수 있나요?"/>
+      <Step title="직접 묘사하기" description="내 파일을 어떻게 묘사하나요?" />
+      <Step title="묘사하지 않기" description="하나하나 수동으로 묘사해야하나요?" />
+    </Steps>
+  );
 }
+
+export default VerticalStep

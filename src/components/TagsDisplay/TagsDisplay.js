@@ -7,13 +7,16 @@ import 'antd/dist/antd.css'
 const TagDisplay = () => {
     let [list, setlist] = useRecoilState(tagList);
 
-    function deleteTag() {
-        console.log('maybe use setlist to modify')
-    }
+    function deleteTag(index) {
+        setlist([
+            ...list.slice(0, index),
+            ...list.slice(index + 1, list.length)
+        ])
+    }   
     return (
         <Space size={[4, 4]} wrap>
             {list.map((name, index) => (
-            <Tag closable onClose={deleteTag}>{name.value}</Tag>
+            <Tag closable onClose={() => deleteTag(index)}>{name.value}</Tag>
             ))} 
         </Space>
     )

@@ -1,5 +1,6 @@
 import "antd/dist/antd.css"
-import { Typography, Button} from 'antd'
+import { Typography, Button } from 'antd'
+import { Link } from 'react-router-dom';
 import "./intro.css"
 
 const { Title } = Typography
@@ -14,7 +15,9 @@ export default function MainSpace() {
                     stolage는 파일을 단순한 디렉토리로 저장하지않습니다. <br/>
                     파일을 label로 묘사하세요.
                 </p>
-                <Button type="primary" htmlType="button">체험하기</Button>
+                <Button type="primary" htmlType="button">
+                    <Link to='/demo'>체험하기</Link>
+                </Button>
             </div>
         </div>
     )
