@@ -1,23 +1,29 @@
 import React from 'react'
-import tagList from '../../TagManage/tags'
-import { AutoComplete } from 'antd'
-import { useRecoilValue } from 'recoil';
+import {tagList, selectedTags} from '../../TagManage/tags'
+import { Select } from 'antd'
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import 'antd/dist/antd.css'
 
 const TagSearch = () => {
-    const options = useRecoilValue(tagList)
+    let canPick = useRecoilValue(tagList)
+    canPick = canPick.map((item) => (<Select.Option key={item} value={item}>
+                                        {item}
+                                     </Select.Option>))
+ 
+    let selectedChange = useSetRecoilState(selectedTags)
+
+    function handleChange(value) {
+        selectedChange(value)
+    }
 
     return (
-        <AutoComplete
-            style={{
-            width: 200,
-            }}
-            options={options}
-            placeholder="태그를 입력하세요."
-            filterOption={(inputValue, option) =>
-            option.value.toUpperCase().indexOf(inputValue.toUpperCase()) !== -1
-            }
-        />
+        <Select mode="tags" 
+                style={{ width: '100%' }} 
+                placeholder="태그를 입력하세요." 
+                onChange={handleChange}>
+                    
+            {canPick}
+        </Select>
     )
 }
 export default TagSearch
