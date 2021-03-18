@@ -1,4 +1,3 @@
-import { Steps } from 'antd';
 import { atom } from 'recoil'
 
 let StepStatus = atom({
