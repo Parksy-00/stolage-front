@@ -1,22 +1,24 @@
 import React from 'react'
-import tagList from '../../TagManage/tags'
+import {recommandList, relatedTags} from '../../TagManage/tags'
 import { Space, Tag } from 'antd'
-import { useRecoilState } from 'recoil';
+import { useRecoilValue, useSetRecoilState } from 'recoil';
 import 'antd/dist/antd.css'
 
 const TagDisplay = () => {
-    let [list, setlist] = useRecoilState(tagList);
+    const list = useRecoilValue(recommandList)
+    const tagMapUpdater = useSetRecoilState(relatedTags)
 
-    function deleteTag(index) {
-        setlist([
-            ...list.slice(0, index),
-            ...list.slice(index + 1, list.length)
-        ])
+    function deleteTag(tag) {
+        tagMapUpdater((tagMap) => {
+            tagMap.delete(tag)
+            return tagMap
+        })
     }   
+
     return (
-        <Space size={[4, 4]} wrap>
-            {list.map((name, index) => (
-            <Tag closable onClose={() => deleteTag(index)}>{name.value}</Tag>
+        <Space size={[8, 16]} wrap>
+            {list.map((name) => (
+                <Tag closable onClose={() => deleteTag(name)}>{name}</Tag>
             ))} 
         </Space>
     )
