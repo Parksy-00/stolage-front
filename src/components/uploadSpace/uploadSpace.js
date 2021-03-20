@@ -22,11 +22,13 @@ export default function UploadPage() {
         //         console.log(res)
         //     })
 
-        selected.forEach(tag => {
+        selected.forEach((tag, index, selected) => {
             if(!related.has(tag)) {
                 relatedSet((old) => {   
                     let updated = new Map(old)
-                    return updated.set(tag, selected)
+                    return updated.set(tag, 
+                                       [...selected.slice(0, index),
+                                        ...selected.slice(index + 1)])
                 })
             }
         });
