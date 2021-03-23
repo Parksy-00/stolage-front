@@ -18,7 +18,7 @@ export default function MainSpace() {
             console.log(tagList)
             const newMap = new Map(related)
             tagList.forEach(tag => {
-                newMap.set(tag.self, tag.related)
+                newMap.set(tag.name, tag.related)
             })
             setRelated(newMap)
         })        
