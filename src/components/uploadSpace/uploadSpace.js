@@ -11,11 +11,11 @@ export default function UploadPage() {
     const recommand = useRecoilValue(recommandList)
 
     const onDrop = (files) => {
-        const config = {
-            header: {'content-type': 'mulipart/form-data'}
-        }
-        let formdata = new FormData()
-        formdata.append("file", files[0])
+        // const config = {
+        //     header: {'content-type': 'mulipart/form-data'}
+        // }
+        // let formdata = new FormData()
+        // formdata.append("file", files[0])
 
         // Axios.post('http://localhost:5000/file', formdata, config)
         //     .then(res => {
