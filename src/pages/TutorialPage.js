@@ -18,7 +18,7 @@ export default function TutorialPage() {
   const [related, setRelated] = useRecoilState(relatedTags)
 
   useEffect(() => {
-        Axios.get('http://localhost:5000/')
+        Axios.get('http://localhost:5000/demo/data')
         .then(res => {
             const tagList = res.data
             console.log(tagList)

@@ -25,7 +25,7 @@ const TagDisplay = () => {
         setSelected(() => newSelected)
 
         const body = { selected: newSelected}
-        Axios.post('http://localhost:5000/document/search', body)
+        Axios.post('http://localhost:5000/demo/search', body)
             .then(res => {
                 const files = res.data
                 console.log(files)
