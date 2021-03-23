@@ -8,6 +8,7 @@ import TagSearch from '../components/TagSearch/TagSearch'
 import VerticalStep from '../components/VerticalStep/VerticalStep'
 import stepStatus from '../StepManage/step'
 import UploadPage from '../components/UploadSpace/UploadSpace'
+import FilesDisplay from "../components/FileDisplay/FilesDisplay"
 const { Sider, Content } = Layout
 
 export default function TutorialPage() {
@@ -28,6 +29,7 @@ export default function TutorialPage() {
               <TagDisplay/>
               <br></br><br></br>
               <TagSearch option='multiple'/>
+              <FilesDisplay/>
               </> }
             {step.currentIndex === 2 && 
               //직접 묘사하기

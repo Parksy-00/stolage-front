@@ -11,7 +11,7 @@ export default function Login() {
         <div style={{marginTop:"20vh"}}>
             <Title style={{margin: "80px 90px 50px", textAlign:'left'}}>stolage</Title>
 
-            <Form wrappercol={{span: 16, offset: 4}} className="login-form" initialValues={{remember: true}}>
+            <Form wrapperCol={{span:18, offset:3}} className="login-form" initialValues={{remember: true}}>
                 <Form.Item
                 name="email"
                 rules={[{required:true, message: "Please write your email!"}]}
@@ -33,14 +33,14 @@ export default function Login() {
                 </Form.Item>
 
                 <Form.Item>
-                    <Button type="primary" htmlType="submit" wrappercol={{offset:6}} className="login-btn">
+                    <Button type="primary" htmlType="submit" className="login-btn">
                         로그인
                     </Button>
                 </Form.Item>
 
                 <Form.Item>
                     stolage가 처음이세요?
-                    <Button type="link">회원가입</Button>
+                    <Button type="link" style={{float:"right"}}>회원가입</Button>
                 </Form.Item>
 
                 <Form.Item>
