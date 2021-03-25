@@ -7,7 +7,6 @@ import TagDisplay from '../components/TagsDisplay/TagsDisplay'
 import TagSearch from '../components/TagsSearch/TagSearch'
 import VerticalStep from '../components/VerticalStep/VerticalStep'
 import stepStatus from '../states/step'
-import UploadPage from '../components/UploadSpace/uploadSpace'
 import FilesDisplay from "../components/FilesDisplay/FilesDisplay"
 import allTags from '../states/allTags'
 const { Sider, Content } = Layout
@@ -31,7 +30,6 @@ export default function TutorialPage() {
           <VerticalStep/>
         </Sider>
         <Content>
-          <Suspense fallback={<div></div>}>
             {step.currentIndex === 1 && 
               //탐색하기
               <>
@@ -63,7 +61,6 @@ export default function TutorialPage() {
               {/* <UploadPage/> */}
               </>
             }
-          </Suspense>
         </Content>
       </Layout>
     </div>

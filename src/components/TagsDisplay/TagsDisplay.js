@@ -1,13 +1,15 @@
-import React, { Suspense } from 'react'
+import React from 'react'
 import { Space, Tag } from 'antd'
 import 'antd/dist/antd.css'
-import { useRecoilValue, useRecoilState } from 'recoil'
+import { useRecoilValue, useRecoilState, useSetRecoilState } from 'recoil'
 import selectedTags from '../../states/selectedTags'
 import recommandTags from '../../states/recommandTags'
-
+import matchedFiles from '../../states/matchedFiles'
+import Axios from 'axios'
 
 const TagDisplay = () => {
     const [selected, setSelected] = useRecoilState(selectedTags)
+    const setFiles = useSetRecoilState(matchedFiles)
     const list = useRecoilValue(recommandTags)
     console.log('tagsDisplay')
     console.log(list)
@@ -18,6 +20,14 @@ const TagDisplay = () => {
             list[i]
         ]
         setSelected(() => newSelected)
+
+        const body = { selected: newSelected}
+        Axios.post('http://localhost:5000/demo/search', body)
+            .then(res => {
+                const files = res.data
+                console.log("files:", files)
+                setFiles(files)
+            })
     }
 
     return (
