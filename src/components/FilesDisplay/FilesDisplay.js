@@ -6,7 +6,7 @@ import 'antd/dist/antd.css'
 
 const FilesDisplay = () => {
     const files = useRecoilValue(matchedFiles)
-    console.log(FilesDisplay)
+    console.log('FilesDisplay')
     console.log(files)
     console.log('--------------------')
     return (
