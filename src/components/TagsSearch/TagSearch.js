@@ -7,11 +7,11 @@ import recommandTags from '../../states/recommandTags'
 import useUpdateMatched from '../../hooks/useUpdateMatched'
 
 const TagSearch = (props) => {
-    let canPick = useRecoilValue(recommandTags)
-    canPick = canPick.map((item) => (<Select.Option key={item} value={item}>
-                                        {item}
-                                     </Select.Option>))
-
+    const canPick = useRecoilValue(recommandTags)
+                        .map((item) => (<Select.Option key={item} value={item}>
+                                            {item}
+                                        </Select.Option>))
+                                        
     const [selected, setSelected] = useRecoilState(selectedTags)
     useUpdateMatched(selected)
 

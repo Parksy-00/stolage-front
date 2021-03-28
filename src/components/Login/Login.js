@@ -1,8 +1,8 @@
 import "antd/dist/antd.css"
-import { Button, Checkbox, Form, Input, Typography, Divider} from 'antd'
 import "./login.css"
-import React from 'react'
+import { Button, Checkbox, Form, Input, Typography, Divider} from 'antd'
 import { UserOutlined, LockOutlined, GoogleOutlined } from '@ant-design/icons';
+import React from 'react'
 
 const { Title } = Typography
 

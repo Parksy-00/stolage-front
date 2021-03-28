@@ -1,7 +1,7 @@
 import { atom } from 'recoil'
 
 const selectedTags = atom({
-    key: 'select',
+    key: 'selectedTags',
     default: [],
 })
 

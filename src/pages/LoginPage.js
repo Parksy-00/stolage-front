@@ -12,8 +12,9 @@ export default function LoginPage() {
     <div className="LoginPage" style={{height:"100vh", width:"100%"}}>
       <Layout>
         <Sider theme='light' width="400px" style={{minHeight:"100vh"}}>
-          <Login></Login>
+          <Login/>
         </Sider>
+
         <Content>
           <Intro/>
         </Content>

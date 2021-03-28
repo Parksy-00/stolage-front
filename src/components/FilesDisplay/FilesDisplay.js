@@ -1,18 +1,17 @@
-import React from 'react'
+import 'antd/dist/antd.css'
 import { Space, Avatar } from 'antd'
+import React from 'react'
 import { useRecoilValue } from 'recoil';
 import matchedFiles from '../../states/matchedFiles'
-import 'antd/dist/antd.css'
 
 const FilesDisplay = () => {
     const files = useRecoilValue(matchedFiles)
-    console.log('FilesDisplay')
-    console.log(files)
-    console.log('--------------------')
+
     return (
         <Space size={[16, 16]} wrap style={{margin:"50px"}}>
             {files.map((file, i) => (
                 <div key={i}>
+                    {/* index as key is anti-pattern */}
                    <Avatar style={{width:"100px", height:"100px", display:'flex', alignItems:"center"}}>{file.name}</Avatar> 
                 </div>
             ))}

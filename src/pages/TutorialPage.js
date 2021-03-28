@@ -1,28 +1,19 @@
 import "antd/dist/antd.css"
-import React, { Suspense, useEffect } from 'react'
 import { Layout } from 'antd'
-import { useRecoilValue, useRecoilState, useSetRecoilState} from "recoil"
-import Axios from 'axios'
+import React from 'react'
+import { useRecoilValue} from "recoil"
 import TagDisplay from '../components/TagsDisplay/TagsDisplay'
 import TagSearch from '../components/TagsSearch/TagSearch'
 import VerticalStep from '../components/VerticalStep/VerticalStep'
 import stepStatus from '../states/step'
 import FilesDisplay from "../components/FilesDisplay/FilesDisplay"
-import allTags from '../states/allTags'
+import useAllTags from '../hooks/useAllTags'
 const { Sider, Content } = Layout
 
 export default function TutorialPage() {
-  const allTagsSet = useSetRecoilState(allTags)
-  useEffect(() => {
-        Axios.get('http://localhost:5000/demo/alltag')
-          .then(res => {
-              allTagsSet(res.data)
-          })        
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  useAllTags([]);
 
   let step = useRecoilValue(stepStatus)
-
   return (
     <div className="TutorialPage" style={{height:"100vh", width:"100%"}}>
       <Layout>
