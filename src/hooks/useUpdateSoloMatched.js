@@ -12,10 +12,7 @@ const useUpdateSoloMatched = (newSelected, searchBarID) => {
         const body = { selected: newSelected }
         const response = await Axios.post('http://localhost:5000/demo/search', body)
         setFiles(response.data)    
-        
-        setAll([...all.slice(0, searchBarID), 
-                response.data, 
-                ...all.slice(searchBarID + 1)])
+        setAll({...all, [searchBarID]: response.data})
 
     }, [newSelected, searchBarID])
 

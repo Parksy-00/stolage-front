@@ -9,13 +9,10 @@ const useUpdateUnionMatched = (searchBarID) => {
     const setUnionedFiles = useSetRecoilState(unionedMatched)
     const all = useRecoilValue(allFiles)
 
-    console.log(all)
     useEffect(() => {
-        let set = new Set([])
-        all.forEach(arr => {
-            set = new Set([...arr, ...set])
-        })
-        setUnionedFiles([...set])
+        if(Object.keys(all).length !== 0) {
+            setUnionedFiles(Object.values(all))
+        }
     }, [Files])
 }
 
