@@ -4,8 +4,8 @@ import React from 'react'
 import { useRecoilValue, useRecoilState, useSetRecoilState } from 'recoil';
 import selectedTags from '../../states/selectedTags'
 import recommandTags from '../../states/recommandTags'
-import useUpdateMatched from '../../hooks/useUpdateMatched'
-import useUnionMatched from '../../hooks/useUnionMatched'
+import useUpdateSoloMatched from '../../hooks/useUpdateSoloMatched'
+import useUpdateUnionMatched from '../../hooks/useUpdateUnionMatched'
 import currentSearchBar from '../../states/currentSearchBar'
 
 const TagSearch = (props) => {
@@ -16,8 +16,8 @@ const TagSearch = (props) => {
                                         </Select.Option>))
                                         
     const [selected, setSelected] = useRecoilState(selectedTags(props.searchBarID))
-    useUpdateMatched(selected, props.searchBarID)
-    useUnionMatched(props.searchBarID)
+    useUpdateSoloMatched(selected, props.searchBarID)
+    useUpdateUnionMatched(props.searchBarID)
 
     return (
         <Select mode={props.option}

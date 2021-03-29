@@ -1,14 +1,14 @@
 import { useEffect } from "react"
-import { useRecoilState, useRecoilValue, useSetRecoilState } from "recoil"
-import Axios from 'axios'
+import { useRecoilValue, useSetRecoilState } from "recoil"
 import matchedFiles from '../states/matchedFiles'
 import unionedMatched from "../states/unionedMatch"
 import allFiles from '../states/allFiles'
 
-const useUnionMatched = (searchBarID) => {
+const useUpdateUnionMatched = (searchBarID) => {
     const Files = useRecoilValue(matchedFiles(searchBarID))
-    const [unionedFiles, setUnionedFiles] = useRecoilState(unionedMatched)
+    const setUnionedFiles = useSetRecoilState(unionedMatched)
     const all = useRecoilValue(allFiles)
+
     console.log(all)
     useEffect(() => {
         let set = new Set([])
@@ -19,4 +19,4 @@ const useUnionMatched = (searchBarID) => {
     }, [Files])
 }
 
-export default useUnionMatched
+export default useUpdateUnionMatched

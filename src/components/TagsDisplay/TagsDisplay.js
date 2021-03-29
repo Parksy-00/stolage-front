@@ -4,12 +4,14 @@ import React from 'react'
 import { useRecoilValue, useRecoilState } from 'recoil'
 import selectedTags from '../../states/selectedTags'
 import recommandTags from '../../states/recommandTags'
-import useUpdateMatched from '../../hooks/useUpdateMatched'
+import useUpdateSoloMatched from '../../hooks/useUpdateSoloMatched'
+import useUpdateUnionMatched from '../../hooks/useUpdateUnionMatched'
 
 const TagDisplay = (props) => {
     const [selected, setSelected] = useRecoilState(selectedTags(props.searchBarID))
     const list = useRecoilValue(recommandTags(props.searchBarID))
-    useUpdateMatched(selected, props.searchBarID)
+    useUpdateSoloMatched(selected, props.searchBarID)
+    useUpdateUnionMatched(props.searchBarID)
 
     const onClick = i => {
         const newSelected = [
