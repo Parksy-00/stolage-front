@@ -1,15 +1,17 @@
 import 'antd/dist/antd.css'
 import { Select } from 'antd'
-import React from 'react'
+import React, { useState } from 'react'
 import { useRecoilValue, useRecoilState, useSetRecoilState } from 'recoil';
 import selectedTags from '../../states/selectedTags'
 import recommandTags from '../../states/recommandTags'
 import useUpdateSoloMatched from '../../hooks/useUpdateSoloMatched'
 import useUpdateUnionMatched from '../../hooks/useUpdateUnionMatched'
 import currentSearchBar from '../../states/currentSearchBar'
+import searchBarIDs from '../../states/searchBarIDs'
 
 const TagSearch = (props) => {
     const setCurrentID = useSetRecoilState(currentSearchBar)
+    const setSeachBarIDs = useSetRecoilState(searchBarIDs)
     const canPick = useRecoilValue(recommandTags(props.searchBarID))
                         .map((item) => (<Select.Option key={item} value={item}>
                                             {item}
@@ -18,7 +20,8 @@ const TagSearch = (props) => {
     const [selected, setSelected] = useRecoilState(selectedTags(props.searchBarID))
     useUpdateSoloMatched(selected, props.searchBarID)
     useUpdateUnionMatched(props.searchBarID)
-
+    
+    const [option, setOption] = useState(false)
     return (
         <Select mode={props.option}
                 style={{ width: '100%' }} 
@@ -27,6 +30,15 @@ const TagSearch = (props) => {
                 onFocus={() => setCurrentID(props.searchBarID)}
                 allowClear={true}
                 value={selected}
+                onClear={() => setSeachBarIDs(
+                                    old => 
+                                    old.filter(ID => 
+                                                    ID === 0 || 
+                                                    ID !== props.searchBarID)
+                        )}
+                open={option}
+                onInputKeyDown={() => setOption(true)}
+                onSelect={() => setOption(false)}
                 //notFoundContent옵션으로 컴포넌트 주면 
                 //검색결과가 없을 때 출력 수정 가능
                 >

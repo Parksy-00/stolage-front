@@ -1,7 +1,7 @@
 import "antd/dist/antd.css"
 import { Layout } from 'antd'
 import React from 'react'
-import { useRecoilValue, useSetRecoilState} from "recoil"
+import { useRecoilValue } from "recoil"
 import TagDisplay from '../components/TagsDisplay/TagsDisplay'
 import MultiTagSearch from '../components/MultiTagSearch/MutiTagSearch'
 import TagSearch from '../components/TagsSearch/TagSearch'

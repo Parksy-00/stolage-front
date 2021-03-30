@@ -1,24 +1,18 @@
 import 'antd/dist/antd.css'
-import { Select } from 'antd'
 import {PlusCircleTwoTone} from '@ant-design/icons'
 import React from 'react'
 import './style.css'
-import { useRecoilValue, useRecoilState, useSetRecoilState } from 'recoil';
-import selectedTags from '../../states/selectedTags'
-import recommandTags from '../../states/recommandTags'
-import useUpdateSoloMatched from '../../hooks/useUpdateSoloMatched'
-import useUpdateUnionMatched from '../../hooks/useUpdateUnionMatched'
-import currentSearchBar from '../../states/currentSearchBar'
+import { useSetRecoilState } from 'recoil';
 import searchBarIDs from '../../states/searchBarIDs'
 
 export default function AddSearchBar() {
 
-    const [IDs, setIDs] = useRecoilState(searchBarIDs)
+    const setIDs = useSetRecoilState(searchBarIDs)
 
-    const onClick = (e) => {
+    const onClick = () => {
         setIDs(oldIDs => [
             ...oldIDs,
-            oldIDs[oldIDs.length-1] + 1
+            oldIDs[oldIDs.length - 1] + 1
         ])
     }
 
