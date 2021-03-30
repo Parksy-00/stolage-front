@@ -1,5 +1,4 @@
 import 'antd/dist/antd.css';
-import { Divider } from 'antd';
 import { useRecoilValue } from "recoil"
 import TagSearch from '../TagsSearch/TagSearch'
 import TagDisplay from '../TagsDisplay/TagsDisplay'

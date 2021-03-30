@@ -5,8 +5,8 @@ import unionedMatched from "../states/unionedMatch"
 import allFiles from '../states/allFiles'
 import searchBarIDs from "../states/searchBarIDs"
 
-const useUpdateUnionMatched = (searchBarID) => {
-    const Files = useRecoilValue(matchedFiles(searchBarID))
+const useUpdateUnionMatched = (currentID) => {
+    const filesByID = useRecoilValue(matchedFiles(currentID))
     const setUnionedFiles = useSetRecoilState(unionedMatched)
     const all = useRecoilValue(allFiles)
     const IDs = useRecoilValue(searchBarIDs)
@@ -25,7 +25,7 @@ const useUpdateUnionMatched = (searchBarID) => {
             })
             setUnionedFiles(ret)
         }
-    }, [Files, IDs])
+    }, [filesByID, IDs])
 }   
 
 export default useUpdateUnionMatched

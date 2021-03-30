@@ -20,21 +20,21 @@ const TagSearch = (props) => {
                                         </Select.Option>))
                                         
     const [selected, setSelected] = useRecoilState(selectedTags(props.searchBarID))
-    const [all, setAll] = useRecoilState(allFiles)
+    const [filesByAllSearchBar, setFilesByAllSearchBar] = useRecoilState(allFiles)
     useUpdateSoloMatched(selected, props.searchBarID)
     useUpdateUnionMatched(props.searchBarID)
     
-    const [option, setOption] = useState(false)
+    const [isOpen, setIsOpen] = useState(false)
 
     const handleClear = () => {
         setCurrentID(0)
         setSeachBarIDs(old => old.filter(ID => ID === 0 || 
                                                ID !== props.searchBarID))                     
         
-        let newAll = {...all}
+        let newAll = {...filesByAllSearchBar}
         const key = props.searchBarID.toString()
         delete newAll[key]
-        setAll(newAll)
+        setFilesByAllSearchBar(newAll)
     }
 
     return (
@@ -47,10 +47,10 @@ const TagSearch = (props) => {
                 allowClear={true}
                 value={selected}
                 onClear={handleClear}
-                open={option}
-                onInputKeyDown={() => setOption(true)}
-                onSelect={() => setOption(false)}
-                onBlur={() => setOption(false)}
+                open={isOpen}
+                onInputKeyDown={() => setIsOpen(true)}
+                onSelect={() => setIsOpen(false)}
+                onBlur={() => setIsOpen(false)}
                 //notFoundContent옵션으로 컴포넌트 주면 
                 //검색결과가 없을 때 출력 수정 가능
                 >
