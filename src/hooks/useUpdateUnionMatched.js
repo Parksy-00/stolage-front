@@ -25,7 +25,7 @@ const useUpdateUnionMatched = (searchBarID) => {
             })
             setUnionedFiles(ret)
         }
-    }, [Files])
+    }, [Files, IDs])
 }   
 
 export default useUpdateUnionMatched

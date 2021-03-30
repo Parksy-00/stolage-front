@@ -1,4 +1,5 @@
 import 'antd/dist/antd.css'
+import './style.css'
 import { Select } from 'antd'
 import React, { useState } from 'react'
 import { useRecoilValue, useRecoilState, useSetRecoilState } from 'recoil';
@@ -11,7 +12,7 @@ import searchBarIDs from '../../states/searchBarIDs'
 import allFiles from '../../states/allFiles'
 
 const TagSearch = (props) => {
-    const setCurrentID = useSetRecoilState(currentSearchBar)
+    const [currentID, setCurrentID] = useRecoilState(currentSearchBar)
     const setSeachBarIDs = useSetRecoilState(searchBarIDs)
     const canPick = useRecoilValue(recommandTags(props.searchBarID))
                         .map((item) => (<Select.Option key={item} value={item}>
@@ -38,7 +39,8 @@ const TagSearch = (props) => {
 
     return (
         <Select mode={props.option}
-                style={{ width: '100%' }} 
+                style={{ width: '100%' }}
+                className={props.searchBarID === currentID ? 'current' : null}
                 placeholder="태그를 입력하세요." 
                 onChange={newSelected => (setSelected(newSelected))}
                 onFocus={() => setCurrentID(props.searchBarID)}
