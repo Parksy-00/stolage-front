@@ -10,13 +10,13 @@ const recommandTags = selectorFamily({
         const files = get(matchedFiles(searchBarID))
         const selected = get(selectedTags(searchBarID))
         const defaultTags = get(allTags)
-        const unionedWithOutDuplicate = 
+        const unionWithOutDuplicate = 
                 (acc, tags) => ([...new Set([...acc, ...tags])])
 
         if(files.length === 0) return defaultTags
 
         return files.map(_ => _.tags)
-                    .reduce(unionedWithOutDuplicate, new Set([]))
+                    .reduce(unionWithOutDuplicate, new Set([]))
                     .filter(tag => !selected.includes(tag))
     }
 })
