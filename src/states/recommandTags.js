@@ -2,20 +2,22 @@ import { selectorFamily } from 'recoil'
 import matchedFiles from './matchedFiles'
 import selectedTags from './selectedTags'
 import allTags from './allTags'
+import unionedMatched from './unionedMatch'
 
 const recommandTags = selectorFamily({
     key: 'recommandTags',
-    get: (searchBarID) => ({get}) => {
+    get: (searchBarID) => ({get}) => {        
+        const files = get(matchedFiles(searchBarID))
         const selected = get(selectedTags(searchBarID))
-        const files = get(matchedFiles(searchBarID)).map(_ => _.tags)
         const defaultTags = get(allTags)
+        const unionedWithOutDuplicate = 
+                (acc, tags) => ([...new Set([...acc, ...tags])])
 
         if(files.length === 0) return defaultTags
-        
-        let ret = new Set([])
-        files.forEach(tags => {ret = new Set([...ret, ...tags])})
 
-        return [...ret].filter(tag => !selected.includes(tag))
+        return files.map(_ => _.tags)
+                    .reduce(unionedWithOutDuplicate, new Set([]))
+                    .filter(tag => !selected.includes(tag))
     }
 })
 
