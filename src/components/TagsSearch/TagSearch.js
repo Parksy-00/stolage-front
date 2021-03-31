@@ -51,6 +51,7 @@ const TagSearch = (props) => {
                 onInputKeyDown={() => setIsOpen(true)}
                 onSelect={() => setIsOpen(false)}
                 onBlur={() => setIsOpen(false)}
+                autoFocus={true}
                 //notFoundContent옵션으로 컴포넌트 주면 
                 //검색결과가 없을 때 출력 수정 가능
                 >
