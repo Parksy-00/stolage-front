@@ -23,30 +23,30 @@ export default function TutorialPage() {
         </Header>
         <Layout>
           <Sider theme='light' width="500px" style={{minHeight:"90vh", position:"relative", padding:'30px'}}>
-            {step.currentIndex === 1 && 
-              //탐색하기
-                <MultiTagSearch option='multiple'/>
-            }
-            {step.currentIndex === 2 && 
-              //직접 묘사하기
+            {step.currentIndex === 0 && 
+              //시작하기
               <>
-              <br></br><br></br>
-              <TagDisplay/>
-              <br></br><br></br>
-              <TagSearch option='tags'/>
-              <br></br><br></br>
-              {/* <UploadPage/> */}
+              인트로
               </>
             }
-            {step.currentIndex === 3 &&
+            {step.currentIndex === 1 && 
+              //탐색하기
+              <MultiTagSearch option='multiple'/>
+            }
+            {step.currentIndex === 2 && 
+              //관리하기(가제)
+              1
+            }
+            {step.currentIndex === 3 && 
+              //직접 묘사하기
+              <>
+              업로드하면서 태깅
+              </>
+            }
+            {step.currentIndex === 4 &&
               //직접 묘사하지 않기
               <>
-              <br></br><br></br>
-              <TagDisplay/>
-              <br></br><br></br>
-              <TagSearch option='tags'/>
-              <br></br><br></br>
-              {/* <UploadPage/> */}
+              자동 태깅
               </>
             }
           </Sider>

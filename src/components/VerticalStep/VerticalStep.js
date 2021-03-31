@@ -17,9 +17,10 @@ let VerticalStep = () => {
   }
 
   return (
-    <Steps current={current} onChange={onChange} direction="horizontal" size="small" style={{width:'50%'}}>
+    <Steps current={current} onChange={onChange} direction="horizontal" size="small" style={{width:'65%'}}>
       <Step title="시작하기"  />
       <Step title="탐색하기" />
+      <Step title="관리하기(가제)" />
       <Step title="직접 묘사하기" />
       <Step title="묘사하지 않기" />
     </Steps>
