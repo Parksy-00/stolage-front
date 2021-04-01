@@ -27,9 +27,9 @@ const TagSearch = (props) => {
         setSeachBarIDs(old => old.filter(ID => ID === 0 || 
                                                ID !== props.searchBarID))                     
         
-        const key = props.searchBarID.toString()
-        const {[key]: _, ...withOutClearedSearchBar} = {...filesByAllSearchBar};
-        setFilesByAllSearchBar(withOutClearedSearchBar)
+        const clearedID = props.searchBarID.toString()
+        const {[clearedID]: _, ...withOutClearedID} = {...filesByAllSearchBar};
+        setFilesByAllSearchBar(withOutClearedID)
     }
 
     const tagRender = (props) => {
