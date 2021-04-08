@@ -1,7 +1,5 @@
 import './App.css';
 import { RecoilRoot } from 'recoil'
-import {} from 'antd'
-import TagsDisplay from './components/TagsDisplay/TagsDisplay'
 import {BrowserRouter, Switch, Route } from 'react-router-dom'
 
 import LoginPage from './pages/LoginPage'
@@ -13,8 +11,6 @@ function App() {
     <RecoilRoot>
       <BrowserRouter>
         <Switch>
-          <Route path='/demo/autolable'><TagsDisplay/></Route>
-          <Route path='/demo/userlable'><TagsDisplay/></Route>
           <Route path='/demo'>
             <TutorialPage/>
           </Route>

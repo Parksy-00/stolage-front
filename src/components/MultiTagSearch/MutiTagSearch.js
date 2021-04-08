@@ -1,7 +1,7 @@
 import 'antd/dist/antd.css';
 import { useRecoilValue } from "recoil"
-import TagSearch from '../TagsSearch/TagSearch'
-import TagDisplay from '../TagsDisplay/TagsDisplay'
+import TagSearch from '../TagSearch/TagSearch'
+import TagDisplay from '../TagDisplay/TagDisplay'
 import AllSearchIDs from '../../states/allSearchIDs'
 import CurrentSearchID from '../../states/currentSearchID'
 import AddSearchBar from '../AddSearchBar/AddSearchBar'

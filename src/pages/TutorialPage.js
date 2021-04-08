@@ -5,12 +5,17 @@ import { useRecoilValue } from "recoil"
 import MultiTagSearch from '../components/MultiTagSearch/MutiTagSearch'
 import DemoStep from '../components/DemoStep/DemoStep'
 import stepStatus from '../states/step'
-import FilesDisplay from "../components/FilesDisplay/FilesDisplay"
+import FileContents from "../components/FileContents/FileContents"
 import useAllTags from '../hooks/useAllTags'
+import GroupsDisplay from "../components/GroupsDisplay/GroupsDisplay"
+import GroupsSearch from "../components/GroupsSearch/GroupsSearch"
+import useAllGroups from "../hooks/useAllGroups"
+import TagContents from "../components/TagContents/TagContents"
 const { Sider, Content, Header } = Layout
 
 export default function TutorialPage() {
   useAllTags([]);
+  useAllGroups([])
 
   let step = useRecoilValue(stepStatus)
   return (
@@ -33,7 +38,13 @@ export default function TutorialPage() {
             }
             {step.currentIndex === 2 && 
               //관리하기(가제)
-              1
+              <>
+                <GroupsDisplay />
+                <div style={{marginTop:'20px'}}>
+                  <GroupsSearch />
+                </div>
+                
+              </>
             }
             {step.currentIndex === 3 && 
               //직접 묘사하기
@@ -49,7 +60,12 @@ export default function TutorialPage() {
             }
           </Sider>
           <Content>
-            <FilesDisplay/>
+            {step.currentIndex === 2 &&
+              <TagContents />
+            }
+            {step.currentIndex !== 2 &&
+              <FileContents />
+            }
           </Content>
         
         </Layout>

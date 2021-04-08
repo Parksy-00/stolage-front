@@ -11,7 +11,7 @@ const useUpdateSoloMatched = (newSelected, searchBarID) => {
     useEffect(async () => {
         const body = { selected: newSelected }
         const response = await Axios.post('http://localhost:5000/demo/search', body)
-        setMatchedFiles(response.data)    
+        setMatchedFiles(response.data)
         setAllFiles({...allFiles, [searchBarID]: response.data})
 
     }, [newSelected, searchBarID])
