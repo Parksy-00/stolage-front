@@ -7,14 +7,14 @@ import RecommandedTags from '../../states/recommandedTags'
 const { TabPane } = Tabs
 
 
-const TagDisplay = (props) => {
-    const [selectedTags, setSelectedTags] = useRecoilState(SelectedTags(props.searchBarID))
-    const recommandedTags = useRecoilValue(RecommandedTags(props.searchBarID))
+const TagDisplay = ({searchBarID}) => {
+    const [selectedTags, setSelectedTags] = useRecoilState(SelectedTags(searchBarID))
+    const recommandedTags = useRecoilValue(RecommandedTags(searchBarID))
 
-    const updateSelected = (i) => {
+    const updateSelected = (index) => {
         const newSelected = [
             ...selectedTags,
-            recommandedTags[i]
+            recommandedTags[index]
         ]
         setSelectedTags(newSelected)
     }
@@ -25,7 +25,7 @@ const TagDisplay = (props) => {
 
                 <TabPane tab='All' 
                          key='all' 
-                         style={ {overflowY: 'auto'}}>
+                         style={ {overflowY: 'auto'} }>
 
                     <Space size={[8, 16]} wrap>
                         {recommandedTags.map((name, index) => (
