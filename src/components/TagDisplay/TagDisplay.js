@@ -16,27 +16,31 @@ const TagDisplay = (props) => {
             ...selectedTags,
             recommandedTags[i]
         ]
-        setSelectedTags(() => newSelected)
+        setSelectedTags(newSelected)
     }
 
     return (
-        <>
         <Tabs defaultActiveKey='all' 
-              style={ { height: 300 }}>
+              style={ { height: 300 } }>
 
                 <TabPane tab='All' 
                          key='all' 
-                         style={ {overflowY: 'auto'}
-                }>
+                         style={ {overflowY: 'auto'}}>
+
                     <Space size={[8, 16]} wrap>
                         {recommandedTags.map((name, index) => (
-                            <Tag color="geekblue" key={name} onClick={() => updateSelected(index)} style={{cursor:"pointer"}}>{name}</Tag>
+                            <Tag color="geekblue" 
+                                 key={name} 
+                                 onClick={() => updateSelected(index)} 
+                                 style={{cursor:"pointer"}}>
+                                     
+                                {name} 
+                            </Tag>
                         ))}
                     </Space>
                 </TabPane>
 
         </Tabs>
-        </>
     )
 };
 
