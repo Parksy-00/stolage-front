@@ -1,0 +1,55 @@
+import React, {useState} from 'react'
+import 'antd/dist/antd.css'
+import { CheckSquareOutlined, CheckSquareFilled } from '@ant-design/icons'
+import { Typography, List  } from 'antd'
+const Text = Typography.Text
+
+function ContentHeader({unionedMatch, setSelected, selectAll, setSelectAll}) {
+
+    const onClick = (e) => {
+        setSelectAll(!selectAll)
+        const list = document.querySelector('.ant-list-items')
+        const listItems = list ? list.children : []
+        if(!selectAll) {
+            for (const item of listItems) {
+                item.classList.add('selected')
+            }
+            setSelected(unionedMatch)
+        }
+        else {
+            for (const item of listItems) {
+                item.classList.remove('selected')
+            }
+            setSelected([])
+        }
+    }
+
+    return (
+        <div style={{padding:'15px 40px 15px'}}>
+            <div style={{border: '1px solid #d9d9d9', backgroundColor:'white', height: "100%", display:'flex', alignItems:'flex-end'}}>
+                <List.Item
+                    style={{width:'100%', padding:'5px'}}
+                    extra={<Text style={{fontSize:'18px', verticalAlign:'middle', marginRight:"calc(10vw + 200px)", userSelect:'none'}}>태그</Text>}
+                >
+                    <div>
+                        {selectAll ? 
+                            <CheckSquareFilled 
+                                style={{margin:'0 40px', fontSize:'20px', verticalAlign:'middle', cursor:'pointer', color: '#1E90FF'}}
+                                onClick={onClick}
+                            /> : 
+                            <CheckSquareOutlined
+                                style={{margin:'0 40px', fontSize:'20px', verticalAlign:'middle', cursor:'pointer'}}
+                                onClick={onClick}
+                            /> 
+                        }
+                        
+                        <Text style={{fontSize:'18px', verticalAlign:'middle', userSelect:'none'}}>이름</Text>
+                    </div>
+                </List.Item>
+                
+            </div>
+        </div>
+    )
+}
+
+export default ContentHeader

@@ -21,11 +21,11 @@ export default function TutorialPage() {
   return (
     <div className="TutorialPage" style={{height:"100vh", width:"100%"}}>
       <Layout>
-        <Header style={{backgroundColor:'#fff', height:"10vh", display:'flex', alignItems:'center', justifyContent:'center', borderBottom:"1px solid #E5E7E9"}}>
+        <Header style={{backgroundColor:'#fff', height:"10vh", display:'flex', alignItems:'center', justifyContent:'center', borderBottom:"1px solid #d9d9d9"}}>
            <DemoStep/>
         </Header>
         <Layout>
-          <Sider theme='light' width="500px" style={{minHeight:"90vh", position:"relative", padding:'30px'}}>
+          <Sider theme='light' width="500px" style={{minHeight:"90vh", position:"relative", padding:'30px', borderRight: '1px solid #d9d9d9'}}>
             {step.currentIndex === 0 && 
               //시작하기
               <>
@@ -59,7 +59,7 @@ export default function TutorialPage() {
               </>
             }
           </Sider>
-          <Content>
+          <Content style={{backgroundColor: '#FBFBFB'}}>
             {step.currentIndex === 2 &&
               <TagContents />
             }
