@@ -2,11 +2,14 @@ import 'antd/dist/antd.css'
 import { Tabs } from 'antd'
 import React from 'react'
 import TagsGrid from '../../components/TagsGrid/TagsGrid'
+import { useRecoilValue } from 'recoil'
+import allGroups from '../../states/allGroups'
 const { TabPane } = Tabs
 
 
 const TagDisplay = ({searchBarID}) => {
-    
+    const AllGroups = useRecoilValue(allGroups)
+
     return (
         <Tabs defaultActiveKey='all' 
               style={ { height: 300 } }>
@@ -18,6 +21,14 @@ const TagDisplay = ({searchBarID}) => {
                     <TagsGrid searchBarID={searchBarID} />
                 </TabPane>
 
+                {AllGroups.map((name) => (
+                    <TabPane tab={name} 
+                             key={name}
+                             style={ {overflowY: 'auto'} }>
+
+                        <TagsGrid searchBarID={searchBarID} />
+                    </TabPane>
+                ))}
         </Tabs>
     )
 };
