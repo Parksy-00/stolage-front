@@ -12,8 +12,7 @@ const TagDisplay = ({searchBarID}) => {
     const AllGroups = ['All', ...useRecoilValue(allGroups)]
 
     return (
-        <Tabs defaultActiveKey='All' 
-              >
+        <Tabs defaultActiveKey='All'>
                 {AllGroups.map((name) => (
                     <TabPane tab={name} 
                              key={name}
