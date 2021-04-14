@@ -18,7 +18,7 @@ const FileList = ({selectedItems, setSelectedItems, unionedMatch, setIsAllEnable
             if(t.closest('.anticon-check-square')) return
             if(t.closest('.addSearch')) return
             if(t.closest('.ant-select-selector')) return
-            if(t.closest('.ant-tag')) return
+            //if(t.closest('.ant-tag')) return
             if(t.closest('.ant-btn')) return
 
             [].forEach.call(list.children, item => item.classList.remove('selected'))
