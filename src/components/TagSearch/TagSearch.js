@@ -45,7 +45,7 @@ const TagSearch = (props) => {
     return (
         <Select mode={props.option}
                 style={{ width: '100%' }}
-                className={props.searchBarID === currentSearchID ? 'current' : null}
+                className={props.searchBarID === currentSearchID ? 'current no-reset' : 'no-reset'}
                 placeholder="태그를 입력하세요." 
                 onChange={newSelected => (setSelectedTags(newSelected))}
                 onFocus={() => setCurrentSearchID(props.searchBarID)}

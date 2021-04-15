@@ -7,9 +7,11 @@ const Text = Typography.Text
 function ContentFooter({selectedItems}) {
 
     const actions = [
-                        <Button type="primary" style={{margin:'10px 10px'}}><DownloadOutlined />다운로드</Button>,
-                        <Button style={{margin:'10px 10px'}}>태그 수정</Button>,
-                        <Button danger style={{margin:"10px 5vw 10px 10px"}}>삭제</Button>
+                        <Button type="primary" style={{margin:'10px 10px'}} className="no-reset">
+                            <DownloadOutlined />다운로드
+                        </Button>,
+                        <Button style={{margin:'10px 10px'}} className="no-reset">태그 수정</Button>,
+                        <Button danger style={{margin:"10px 5vw 10px 10px"}} className="no-reset">삭제</Button>
                     ]
                      
 

@@ -8,11 +8,13 @@ function CheckBox({isEnabled, commonStyle, justForEnabled, justForDisabled, onCl
         (isEnabled) 
             ? 
             <CheckSquareFilled 
+                className="no-reset"
                 style={{...commonStyle, ...justForEnabled}}
                 onClick={onClick}/> 
             
             : 
             <CheckSquareOutlined
+                className="no-reset"
                 style={{...commonStyle, ...justForDisabled}}
                 onClick={onClick}/> 
     )

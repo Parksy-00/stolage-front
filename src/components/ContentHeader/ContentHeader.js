@@ -7,11 +7,13 @@ const Text = Typography.Text
 function ContentHeader({unionedMatch, setSelectedItems, isAllEnabled, setIsAllEnabled}) {
 
     const onClick = () => {
+        const container = document.querySelector('.ant-list-items')
+        if(!container) return
+        const items = container.children
+
         setIsAllEnabled(!isAllEnabled)
         isAllEnabled = !isAllEnabled
         
-        const container = document.querySelector('.ant-list-items')
-        const items = container ? container.children : []
 
         if(isAllEnabled) {
             [].forEach.call(items, item => item.classList.add('selected'))

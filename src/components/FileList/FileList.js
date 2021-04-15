@@ -15,11 +15,7 @@ const FileList = ({selectedItems, setSelectedItems, unionedMatch, setIsAllEnable
             console.log(t)
             const list = document.querySelector('.ant-list-items')
             if(t.closest('.ant-list-items') == list) return
-            if(t.closest('.anticon-check-square')) return
-            if(t.closest('.addSearch')) return
-            if(t.closest('.ant-select-selector')) return
-            //if(t.closest('.ant-tag')) return
-            if(t.closest('.ant-btn')) return
+            if(t.closest('.no-reset')) return
 
             [].forEach.call(list.children, item => item.classList.remove('selected'))
             setSelectedItems([])
