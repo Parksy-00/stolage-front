@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRecoilValue } from 'recoil';
 import UnionedMatch from '../../states/unionedMatch';
 import FileList from '../FileList/FileList'
@@ -9,6 +9,13 @@ const FileContents = () => {
     const unionedMatch = useRecoilValue(UnionedMatch)
     const [selectedItems, setSelectedItems] = useState([])
     const [isAllEnabled, setIsAllEnabled] = useState(false)
+
+    useEffect(() => {
+        const container = document.querySelector('.ant-list-items')
+        const items = container ? container.children : [];
+        [].forEach.call(items, item => item.classList.remove('selected'))
+        setSelectedItems([])
+    }, [unionedMatch]) 
 
     return (
         <div style={{height:"90vh"}}>

@@ -13,10 +13,6 @@ const useUpdateUnionMatched = (currentID) => {
 
     useEffect(() => {
         if(Object.keys(allFiles).length !== 0) {
-            const container = document.querySelector('.ant-list-items')
-            const items = container ? container.children : [];
-            [].forEach.call(items, item => item.classList.remove('selected'))
-
             const originalFiles = Object.values(allFiles).flat(1)
             const set = new Set()
 
